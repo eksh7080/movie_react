@@ -6,24 +6,29 @@
 
     <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     
-    <script>
+
+
+    <script type="text/babel">
         const root = document.getElementById("root");
 
-        const h1 = React.createElement(
-        "h1", 
-        {onMouseEnter: () => console.log("mouse enter")},
-        "Hello i'm a span"
-        );
-
-        const btn = React.createElement(
-            "button",
-             {onClick: () => console.log("clicked")}, 
-            "Click me"
+        function App(){
+            const [counter, setCounter] = React.useState(0);
+            const CounterUp = () =>{
+                setCounter((current) => current + 1);
+                
+            }
+            return(
+                <div>
+                    <h3 > Total clicks: {counter}</h3>
+                    <button onClick ={CounterUp}>Click me</button>
+                </div>
             );
+            
+        }
+        ReactDOM.render( <App />, root);
+    
 
-        const container = React.createElement("div", null, [h1, btn]);
-
-        ReactDOM.render(container, root);
     </script>
 </html>
